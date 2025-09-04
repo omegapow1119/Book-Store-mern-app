@@ -3,6 +3,7 @@ import getBaseUrl from '../../../utils/baseURL'
 
 const baseQuery = fetchBaseQuery({
     baseUrl: `${getBaseUrl()}/api/books`,
+    credentials: 'include',
 
     prepareHeaders: (headers) => {
         const token = localStorage.getItem('token');
@@ -35,17 +36,14 @@ const booksApi = createApi({
             invalidatesTags: ["Books"]
         }),
         updateBook: builder.mutation({
-            query: ({ id, ...rest }) => {
-                console.log(rest)
-                return {
-                    url: `/edit/${id}`,
-                    method: "PUT",
-                    body: rest.formData,
-                    headers: {
-                        'Content-Type': 'multipart/form-data '
-                    }
+            query: ({ id, ...rest }) => ({
+                url: `/edit/${id}`,
+                method: "PUT",
+                body: rest,
+                headers: {
+                    'Content-Type': 'application/json'
                 }
-            },
+            }),
             invalidatesTags: ["Books"]
         }),
         deleteBook: builder.mutation({

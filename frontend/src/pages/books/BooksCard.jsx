@@ -36,7 +36,7 @@ const BookCard = ({ book, totalBooks }) => {
           <div className={`${imageSize} flex-shrink-0 rounded-lg overflow-hidden border border-gray-200 shadow-sm hover:shadow-md transition-shadow duration-300`}>
             <Link to={`/books/${book._id}`}>
               <img
-                src={book?.coverImage ? getImgUrl(book.coverImage) : placeholderImage}
+                src={book?.coverImage ? book.coverImage : placeholderImage}
                 alt={book?.title || "Book cover"}
                 className="w-full h-full object-cover p-2 rounded-md cursor-pointer hover:scale-105 transition-transform duration-300"
               />

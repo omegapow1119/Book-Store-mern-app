@@ -1,8 +1,13 @@
+const cloudinary = require("../stats/cloudinary");
 const Book = require("./book.model");
 
 const postABook = async (req, res) => {
     try {
-        const newBook = await Book({ ...req.body });
+        const { coverImage, ...rest } = req.body;
+
+        const upload = await cloudinary.uploader.upload(coverImage);
+
+        const newBook = await Book({ ...rest, coverImage: upload.secure_url });
         await newBook.save();
         res.status(200).send({ message: "Book posted successfully", book: newBook })
     } catch (error) {
@@ -42,9 +47,6 @@ const getSingleBook = async (req, res) => {
 // update book data
 const UpdateBook = async (req, res) => {
     try {
-        // console.log("Updating book with data:", req);
-        console.log('Text fields:', req.body);   // { title: '...', author: '...' }
-  console.log('File info :', req.file);    // path, originalname, mimetype …
         const { id } = req.params;
         const updatedBook = await Book.findByIdAndUpdate(id, req.body, { new: true });
         if (!updatedBook) {

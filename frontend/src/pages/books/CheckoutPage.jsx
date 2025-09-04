@@ -14,7 +14,6 @@ const CheckoutPage = () => {
     const {
         register,
         handleSubmit,
-        watch,
         formState: { errors },
     } = useForm()
 

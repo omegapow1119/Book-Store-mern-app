@@ -6,7 +6,7 @@ const loadCartFromLocalStorage = () => {
     const savedCart = localStorage.getItem('cart');
     return savedCart ? JSON.parse(savedCart) : { cartItems: [] };
 };
-
+ 
 // Save state to local storage
 const saveCartToLocalStorage = (state) => {
     localStorage.setItem('cart', JSON.stringify(state));

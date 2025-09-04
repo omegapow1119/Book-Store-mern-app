@@ -51,7 +51,7 @@ const SingleBook = () => {
         <div className="flex flex-col md:flex-row gap-4 sm:gap-6 items-center">
           <div className="md:w-1/2 group">
             <img
-              src={getImgUrl(book.coverImage)}
+              src={book.coverImage}
               alt={`Cover of ${book.title}`}
               className="w-full h-auto max-h-80 object-contain rounded-sm shadow-xs mb-4 sm:mb-6 transition-all duration-300 group-hover:scale-105 group-hover:ring-1 group-hover:ring-teal-200"
             />

@@ -13,6 +13,10 @@ const verifyAdminToken =  (req, res, next) => {
         if (err) {
             return res.status(403).json({ message: 'Invalid credientials' });
         }
+        //check if user is admin
+        if (user.role !== 'admin') {
+            return res.status(403).json({ message: 'Access Denied. Admins only' });
+        }
         req.user = user;
         next();
     })

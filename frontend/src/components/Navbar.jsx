@@ -10,7 +10,7 @@ import { useSelector } from 'react-redux';
 import { useAuth } from '../context/AuthContext';
 
 const navigation = [
-  { name: 'Dashboard', href: '/user-dashboard' },
+  { name: 'Dashboard', href: '/dashboard' }, //changed by me 
   { name: 'Orders', href: '/orders' },
   { name: 'Cart Page', href: '/cart' },
   { name: 'Check Out', href: '/checkout' },
@@ -32,6 +32,9 @@ const Navbar = ({ setIsDropdownOpen, isDropdownOpen }) => {
   return (
     <header className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
       <nav className="flex justify-between items-center">
+
+        {/* left side */}
+
         <div className="flex items-center md:gap-16 gap-4">
           <Link to="/">
             <HiMiniBars3CenterLeft
@@ -50,6 +53,8 @@ const Navbar = ({ setIsDropdownOpen, isDropdownOpen }) => {
             />
           </div>
         </div>
+
+        {/* right side */}
 
         <div className="relative flex items-center md:space-x-3 space-x-2">
           <div>
@@ -80,7 +85,7 @@ const Navbar = ({ setIsDropdownOpen, isDropdownOpen }) => {
                       ))}
                       <li>
                         <button
-                          onClick={handleLogOut} 
+                          onClick={handleLogOut}
                           className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-200"
                           aria-label="Logout"
                         >
@@ -108,7 +113,7 @@ const Navbar = ({ setIsDropdownOpen, isDropdownOpen }) => {
             aria-label="Cart"
           >
             <AiOutlineShoppingCart className="text-gray-100" />
-            <span className="text-sm font-semibold sm:ml-1">{cartItems.length}</span> 
+            <span className="text-sm font-semibold sm:ml-1">{cartItems.length}</span>
           </Link>
         </div>
       </nav>

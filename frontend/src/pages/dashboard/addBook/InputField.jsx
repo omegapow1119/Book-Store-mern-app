@@ -4,14 +4,14 @@ const InputField = ({ label, name, type = 'text', placeholder, register, validat
   return (
     <div className="mb-4">
       <label
-        htmlFor={name}
+        // htmlFor={name}
         className="block text-sm font-medium text-gray-700 font-primary mb-2"
       >
         {label}
       </label>
       {type === 'textarea' ? (
         <textarea
-          {...register(name, validation)}
+          {...register(name, {required:true})}
           id={name}
           name={name}
           placeholder={placeholder}
@@ -21,7 +21,7 @@ const InputField = ({ label, name, type = 'text', placeholder, register, validat
       ) : (
         <input
           type={type}
-          {...register(name, validation)}
+          {...register(name, {required:true})}
           id={name}
           name={name}
           placeholder={placeholder}
@@ -29,9 +29,9 @@ const InputField = ({ label, name, type = 'text', placeholder, register, validat
           aria-label={label}
         />
       )}
-      {errors[name] && (
+      {/* {errors[name] && (
         <p className="text-red-500 text-xs mt-1 font-primary">{errors[name].message}</p>
-      )}
+      )} */}
     </div>
   );
 };
