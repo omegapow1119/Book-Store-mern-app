@@ -4,9 +4,7 @@ const app = express();
 const cors = require("cors");
 const mongoose = require("mongoose");
 
-
-const port = process.env.PORT || 5000;
-
+// const port = process.env.PORT || 5000
 //JQjls6Hp1ckdpd5H
 //mongodb+srv://omegapow1119:JQjls6Hp1ckdpd5H@cluster0.e5uv2pj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
 
@@ -41,6 +39,14 @@ main().then(() => console.log("mongodb connect successfully")
 ).catch(err => console.log(err)
 );
 
-app.listen(port, () => {
-    console.log(`Server Started at Port ${port}`)
-})
+
+if (process.env.NODE_ENV !== "production") {
+    const PORT = process.env.PORT || 5000;
+    app.listen(PORT, () => {
+        console.log(`Server is running on PORT: ${PORT}`);
+    });
+}
+export default app;
+// app.listen(port, () => {
+//     console.log(`Server Started at Port ${port}`)
+// })
