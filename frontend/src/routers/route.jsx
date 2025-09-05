@@ -11,12 +11,12 @@ import PrivateRoute from './PrivateRoute';
 import { AuthProvider } from '../context/AuthContext';
 import OrderPage from '../pages/books/OrderPage';
 import AdminLogin from '../components/AdminLogin';
-import DashboardLayout from '../pages/dashboard/DashboardLayout';
+import DashboardLayout from '../pages/dashboard/DashboardLayout.jsx';
 import AdminRoute from './AdminRoute';
-import Dashboard from '../pages/dashboard/Dashboard';
-import ManageBooks from '../pages/dashboard/ManageBooks/ManageBooks';
-import AddBook from '../pages/dashboard/addBook/AddBook';
-import UpdateBook from '../pages/dashboard/EditBook/UpdateBook';
+import Dashboard from '../pages/dashboard/Dashboard.jsx';
+import ManageBooks from '../pages/dashboard/ManageBooks/ManageBooks.jsx';
+import AddBook from '../pages/dashboard/addBook/AddBook.jsx';
+import UpdateBook from '../pages/dashboard/EditBook/UpdateBook.jsx';
 
 const router = createBrowserRouter([
   {
