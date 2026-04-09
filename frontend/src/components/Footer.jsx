@@ -129,7 +129,7 @@ const Footer = () => {
                 <p
                     className="relative inline-block drop-shadow-sm hover:text-teal-300 hover:scale-105 transition-all duration-300 hover:drop-shadow-[0_0_6px_rgba(94,234,212,0.5)] after:content-[''] after:absolute after:w-0 after:h-[1px] after:bg-teal-300 after:bottom-[-2px] after:left-0 after:transition-all after:duration-300 after:ease-in-out hover:after:w-full cursor-default"
                 >
-                    © 2025 BookStoreApp. By Abhishek Kumar.
+                    © 2025 BookStoreApp.
                 </p>
             </div>
 

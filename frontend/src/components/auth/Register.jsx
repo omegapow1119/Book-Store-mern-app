@@ -12,7 +12,7 @@ function Register() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm(); // CHANGE: Removed unused watch
+  } = useForm(); //This is used for form handling(useForm import for react hook form)
 
   const onSubmit = async (data) => {
     try {

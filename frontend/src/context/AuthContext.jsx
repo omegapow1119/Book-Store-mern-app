@@ -27,7 +27,7 @@ export const AuthProvider = ({ children }) => {
 
   const loginUser = async (email, password) => {
     return await signInWithEmailAndPassword(auth, email, password);
-  };
+  }; 
 
   const signInWithGoogle = async () => {
     return await signInWithPopup(auth, googleProvider);

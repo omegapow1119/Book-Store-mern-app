@@ -1,5 +1,6 @@
 const cloudinary = require("../stats/cloudinary");
 const Book = require("./book.model");
+const axios = require("axios");
 
 const postABook = async (req, res) => {
     try {
@@ -8,7 +9,7 @@ const postABook = async (req, res) => {
         const upload = await cloudinary.uploader.upload(coverImage);
 
         const newBook = await Book({ ...rest, coverImage: upload.secure_url });
-        await newBook.save();
+        await newBook.save(); //to save in database
         res.status(200).send({ message: "Book posted successfully", book: newBook })
     } catch (error) {
         console.error("Error creating book", error);
@@ -79,10 +80,26 @@ const deleteABook = async (req, res) => {
     }
 };
 
+const getRecommendations = async (req, res) => {
+    try {
+        const { email } = req.query;
+        let url = 'http://127.0.0.1:8000/recommend';
+        if (email && email !== 'undefined' && email !== 'null') {
+            url += `?email=${encodeURIComponent(email)}`;
+        }
+        const response = await axios.get(url);
+        res.status(200).send(response.data);
+    } catch (error) {
+        console.error("Error fetching recommendations", error);
+        res.status(500).send({ message: "Failed to fetch recommendations" })
+    }
+};
+
 module.exports = {
     postABook,
     getAllBooks,
     getSingleBook,
     UpdateBook,
-    deleteABook
+    deleteABook,
+    getRecommendations
 }

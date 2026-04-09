@@ -3,7 +3,7 @@ import getBaseUrl from '../../../utils/baseURL'
 
 const baseQuery = fetchBaseQuery({
     baseUrl: `${getBaseUrl()}/api/books`,
-    credentials: 'include',
+    credentials: 'include', 
 
     prepareHeaders: (headers) => {
         const token = localStorage.getItem('token');
@@ -21,6 +21,13 @@ const booksApi = createApi({
     endpoints: (builder) => ({
         fetchAllBooks: builder.query({
             query: () => "/",
+            providesTags: ["Books"]
+        }),
+        fetchRecommendations: builder.query({
+            query: (email) => {
+                if (email) return `/recommendations?email=${encodeURIComponent(email)}`;
+                return `/recommendations`;
+            },
             providesTags: ["Books"]
         }),
         fetchBookById: builder.query({
@@ -55,5 +62,5 @@ const booksApi = createApi({
         })
     })
 })
-export const { useFetchAllBooksQuery, useFetchBookByIdQuery, useAddBookMutation, useUpdateBookMutation, useDeleteBookMutation } = booksApi;
+export const { useFetchAllBooksQuery, useFetchBookByIdQuery, useAddBookMutation, useUpdateBookMutation, useDeleteBookMutation, useFetchRecommendationsQuery } = booksApi;
 export default booksApi;

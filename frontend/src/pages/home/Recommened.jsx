@@ -4,16 +4,12 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import { useFetchAllBooksQuery } from '../../redux/features/books/booksApi';
+import { useFetchRecommendationsQuery } from '../../redux/features/books/booksApi';
+import { useAuth } from '../../context/AuthContext';
 
 function Recommended() {
-  const { data: books = [], isLoading, error } = useFetchAllBooksQuery();
-
-  // Use useMemo to avoid recalculating recommendedBooks unnecessarily
-  
-  const recommendedBooks = useMemo(() => {
-    return books.length > 7 ? books.slice(7) : books;
-  }, [books]);
+  const { currentUser } = useAuth();
+  const { data: recommendedBooks = [], isLoading, error } = useFetchRecommendationsQuery(currentUser?.email);
 
   return (
     <section className="py-6 sm:py-8 md:py-10 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white">
