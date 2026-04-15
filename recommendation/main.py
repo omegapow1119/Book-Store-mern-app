@@ -99,9 +99,8 @@ def get_recommendations(email: Optional[str] = None):
         # Convert indices back to book objects
         recommended_books = []
         for idx in list(recommended_indices)[:10]: # Max 10 recommendations
-            book_dict = books_df.iloc[idx].to_dict()
-            book_dict.pop('content', None) # Remove the combined content field
-            recommended_books.append(book_dict)
+            b = books_list[idx]
+            recommended_books.append(serialize_book(b))
             
         if not recommended_books:
             # Fallback

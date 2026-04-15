@@ -1,7 +1,7 @@
- const jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 const JWT_SECRET = process.env.JWT_SECRET_KEY
 
-const verifyAdminToken =  (req, res, next) => {
+const verifyAdminToken = (req, res, next) => {
     const token = req.headers['authorization']?.split(' ')[1];
 
     // console.log(token)
@@ -11,7 +11,7 @@ const verifyAdminToken =  (req, res, next) => {
     }
     jwt.verify(token, JWT_SECRET, (err, user) => {
         if (err) {
-            return res.status(403).json({ message: 'Invalid credientials' });
+            return res.status(403).json({ message: 'Invalid credentials' });
         }
         //check if user is admin
         if (user.role !== 'admin') {

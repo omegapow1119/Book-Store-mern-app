@@ -83,7 +83,7 @@ const deleteABook = async (req, res) => {
 const getRecommendations = async (req, res) => {
     try {
         const { email } = req.query;
-        let url = 'http://127.0.0.1:8000/recommend';
+        let url = 'http://127.0.0.1:8001/recommend';
         if (email && email !== 'undefined' && email !== 'null') {
             url += `?email=${encodeURIComponent(email)}`;
         }

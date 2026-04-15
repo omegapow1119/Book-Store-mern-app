@@ -96,10 +96,12 @@ const AddBook = () => {
             options={[
               { value: '', label: 'Choose A Category' },
               { value: 'business', label: 'Business' },
-              { value: 'technology', label: 'Technology' },
               { value: 'fiction', label: 'Fiction' },
               { value: 'horror', label: 'Horror' },
               { value: 'adventure', label: 'Adventure' },
+              { value: 'Law', label: 'Law' },
+              { value: 'Romance', label: 'Romance' },
+              { value: 'Suspense', label: 'Suspense' },
             ]}
             register={register}
           />
@@ -121,7 +123,7 @@ const AddBook = () => {
           <InputField
             label="Old Price"
             name="oldPrice"
-            type="number"
+            type="text"
             placeholder="Enter old price"
             register={register}
           />
@@ -129,7 +131,7 @@ const AddBook = () => {
           <InputField
             label="New Price"
             name="newPrice"
-            type="number"
+            type="text"
             placeholder="Enter new price"
             register={register}
           />

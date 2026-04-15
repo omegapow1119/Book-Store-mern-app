@@ -4,7 +4,7 @@ const app = express();
 const cors = require("cors");
 const mongoose = require("mongoose");
 
-const port = process.env.PORT || 5000
+const port = process.env.PORT || 5001
 //JQjls6Hp1ckdpd5H
 //mongodb+srv://omegapow1119:JQjls6Hp1ckdpd5H@cluster0.e5uv2pj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
 
@@ -13,7 +13,10 @@ app.use(express.json({
     limit: '10mb'
 }));
 app.use(cors({
-    origin: ['http://localhost:5173'],
+    origin: function(origin, callback) {
+        // Allow all origins for local development flexibility
+        callback(null, true);
+    },
     credentials: true
 }))
 

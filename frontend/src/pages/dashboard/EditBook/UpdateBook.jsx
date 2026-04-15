@@ -86,13 +86,15 @@ const UpdateBook = () => {
           label="Category"
           name="category"
           options={[
-            { value: '', label: 'Choose A Category' },
-            { value: 'business', label: 'Business' },
-            { value: 'technology', label: 'Technology' },
-            { value: 'fiction', label: 'Fiction' },
-            { value: 'horror', label: 'Horror' },
-            { value: 'adventure', label: 'Adventure' },
-          ]}
+              { value: '', label: 'Choose A Category' },
+              { value: 'business', label: 'Business' },
+              { value: 'fiction', label: 'Fiction' },
+              { value: 'horror', label: 'Horror' },
+              { value: 'adventure', label: 'Adventure' },
+              { value: 'Law', label: 'Law' },
+              { value: 'Romance', label: 'Romance' },
+              { value: 'Suspense', label: 'Suspense' },
+            ]}
           register={register}
         />
         <div className="mb-4">
@@ -109,7 +111,7 @@ const UpdateBook = () => {
         <InputField
           label="Old Price"
           name="oldPrice"
-          type="number"
+          type="text"
           placeholder="Old Price"
           register={register}
         />
@@ -117,7 +119,7 @@ const UpdateBook = () => {
         <InputField
           label="New Price"
           name="newPrice"
-          type="number"
+          type="text"
           placeholder="New Price"
           register={register}
         />
